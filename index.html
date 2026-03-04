@@ -157,12 +157,18 @@
   tbody tr:nth-child(even) { background: #fafafa; }
   tbody tr:nth-child(even):hover { background: #f5f5f5; }
   tbody td { padding: 11px 14px; vertical-align: middle; }
+  /* Show only Name (col2), Category (col3), Achievement (col8) */
+  thead th:nth-child(1), tbody td:nth-child(1),
+  thead th:nth-child(4), tbody td:nth-child(4),
+  thead th:nth-child(5), tbody td:nth-child(5),
+  thead th:nth-child(6), tbody td:nth-child(6),
+  thead th:nth-child(7), tbody td:nth-child(7) { display: none; }
   .td-rank { font-weight: 700; color: var(--dark); font-size: .9rem; text-align: center; width: 48px; }
   .rank-medal { font-size: 1rem; }
   .td-name { font-weight: 600; color: var(--dark); }
   .td-flags { font-size: 1.1rem; letter-spacing: 2px; white-space: nowrap; text-align: center; }
   .cat-badge { display: inline-block; padding: 3px 9px; border-radius: 20px; font-size: .68rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; white-space: nowrap; }
-  .td-achievement { max-width: 280px; color: #555; font-size: .78rem; line-height: 1.45; }
+  .td-achievement { max-width: 400px; color: #555; font-size: .78rem; line-height: 1.45; }
   .social-cell { font-size: .78rem; color: #444; white-space: nowrap; }
 
   /* Pagination */
@@ -210,12 +216,9 @@
     .stats-bar { padding: 12px; }
     .stat-num { font-size: 1.1rem; }
     .showcase-cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    thead th:nth-child(6), tbody td:nth-child(6),
-    thead th:nth-child(7), tbody td:nth-child(7),
-    thead th:nth-child(8), tbody td:nth-child(8) { display: none; }
     thead th { padding: 8px 6px; font-size: .6rem; }
     tbody td { padding: 7px 6px; font-size: .78rem; }
-    .td-achievement { display: none; }
+    .td-achievement { max-width: 200px; font-size: .72rem; }
     .filter-bar { gap: 8px; }
     .filter-bar input[type="text"] { min-width: 140px; font-size: .82rem; padding: 8px 12px; }
     .filter-bar select { font-size: .82rem; padding: 8px 10px; }
@@ -238,15 +241,10 @@
     .stat-label { font-size: .58rem; }
     .showcase-cards { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .showcase-row-title { font-size: .95rem; }
-    thead th:nth-child(3), tbody td:nth-child(3),
-    thead th:nth-child(5), tbody td:nth-child(5),
-    thead th:nth-child(6), tbody td:nth-child(6),
-    thead th:nth-child(7), tbody td:nth-child(7),
-    thead th:nth-child(8), tbody td:nth-child(8) { display: none; }
     .results-table-wrap { overflow-x: hidden; }
     thead th { padding: 7px 5px; font-size: .58rem; }
     tbody td { padding: 6px 5px; font-size: .75rem; }
-    .td-rank { width: 32px; font-size: .8rem; }
+    .td-achievement { max-width: 140px; font-size: .68rem; }
     .filter-bar { flex-direction: column; }
     .filter-bar input[type="text"] { min-width: 100%; }
     .filter-bar select { width: 100%; }
