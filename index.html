@@ -27,8 +27,8 @@
   body { font-family: 'TT Norms Pro', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
   /* ── HERO ── */
-  .hero { overflow: hidden; background: var(--accent); max-height: 600px; display: flex; align-items: center; justify-content: center; }
-  .hero-banner-img { width: 100%; display: block; height: auto; object-fit: cover; object-position: center center; margin-bottom: -70px; }
+  .hero { overflow: hidden; background: var(--accent); }
+  .hero-banner-img { width: 100%; display: block; height: auto; }
 
   /* ── STATS BAR ── */
   .stats-bar { background: #fff; display: flex; justify-content: space-around; padding: 20px 32px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
@@ -205,7 +205,6 @@
   }
 
   @media (max-width: 900px) {
-    .hero { max-height: 400px; }
     .cards-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
     .card-photo { height: 100px; }
     .featured-section, .table-section, .showcase-section { padding-left: 16px; padding-right: 16px; }
@@ -224,7 +223,6 @@
   }
 
   @media (max-width: 680px) {
-    .hero { max-height: 300px; }
     .cards-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .card-photo { height: 90px; }
     .card-body { padding: 8px 8px 10px; }
@@ -245,7 +243,6 @@
   }
 
   @media (max-width: 480px) {
-    .hero { max-height: 220px; }
     .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .card-photo { height: 110px; }
     .card-body { padding: 10px; }
@@ -524,7 +521,6 @@ const NAME_TO_IMG = {
   "Mirela Naska": "mirela_naska",
   "Mirjeta Shala": "mirjeta_shala",
   "Monika Kryemadhi": "monika_kryemadhi",
-  "Olta Xhaçka": "olta_xhacka",
   "Rudina Magjistari": "rudina_magjistari",
   "Shqipe Pantina": "shqipe_pantina",
   "Teuta Arifi": "teuta_arifi",
