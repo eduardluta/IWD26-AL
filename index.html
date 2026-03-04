@@ -574,6 +574,34 @@ const NAME_TO_IMG = {
 };
 function getImgSrc(name) { return IMG[NAME_TO_IMG[name]] || null; }
 
+// Per-image object-position overrides (default is "center 20%")
+const IMG_POS = {
+  "aferdita_dreshaj": "center center",
+  "anilda_ibrahimi": "center center",
+  "anna_oxa": "center center",
+  "antoneta_kastrati": "center center",
+  "arjola_shehu": "center center",
+  "armina_mevlani": "center center",
+  "ava_max": "center top",
+  "belinda_balluku": "center 30%",
+  "brisida": "center center",
+  "cindy_marina": "center top",
+  "detina_zalli": "center center",
+  "donika_gervalla": "center center",
+  "dorina_mema": "center center",
+  "dua_lipa": "center top",
+  "elvana_gjata": "center center",
+  "elvira_dones": "center center",
+  "eni_koci": "center center",
+  "enkileda_carja": "center top",
+  "erisa_kurti": "center center",
+  "erjona_sulejmani": "center center"
+};
+function getImgPos(name) {
+  const key = NAME_TO_IMG[name];
+  return IMG_POS[key] || "center 20%";
+}
+
 
 // Google "G" icon as inline SVG
 const G_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" style="width:.7em;height:.7em;vertical-align:middle"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59a14.5 14.5 0 0 1 0-9.18l-7.98-6.19a24.0 24.0 0 0 0 0 21.56l7.98-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>`;
@@ -2269,7 +2297,7 @@ function buildFeaturedCards() {
     const initials = p.name.split(' ').map(w=>w[0]).join('');
     const accentColor = STRIP_COLORS[i % 10];
     const photoHtml = imgSrc
-      ? `<div class="card-photo"><img src="${imgSrc}" alt="${p.name}" loading="lazy" style="object-position:center 20%"></div>`
+      ? `<div class="card-photo"><img src="${imgSrc}" alt="${p.name}" loading="lazy" style="object-position:${getImgPos(p.name)}"></div>`
       : `<div class="card-photo"><div class="initials" style="background:${accentColor}">${initials}</div></div>`;
     const card = document.createElement('div');
     card.className = 'person-card';
@@ -2342,7 +2370,7 @@ function buildCategoryRows() {
       const initials = p.name.split(' ').map(w => w[0]).join('');
       const accentColor = catCol.bar;
       const photoHtml = imgSrc
-        ? `<div class="card-photo"><img src="${imgSrc}" alt="${p.name}" loading="lazy" style="object-position:center 20%"></div>`
+        ? `<div class="card-photo"><img src="${imgSrc}" alt="${p.name}" loading="lazy" style="object-position:${getImgPos(p.name)}"></div>`
         : `<div class="card-photo"><div class="initials" style="background:${accentColor}">${initials}</div></div>`;
       const flags = getFlags(p.country);
       const igDisplay = fmtNum(p.instagram);
