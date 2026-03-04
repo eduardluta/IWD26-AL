@@ -104,33 +104,10 @@
   }
   .showcase-row-title .cat-pill { font-size: .65rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: .06em; }
   .showcase-scroll-wrap { position: relative; }
-  .showcase-scroll-wrap::after {
-    content: ''; position: absolute; top: 0; right: 0; bottom: 12px; width: 60px;
-    background: linear-gradient(to right, transparent, var(--bg)); pointer-events: none; z-index: 2;
-  }
   .showcase-cards {
-    display: flex; gap: 12px; overflow-x: auto; padding-bottom: 12px;
-    -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
-    scrollbar-width: thin; scrollbar-color: var(--accent) var(--border);
-    scroll-snap-type: x proximity;
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
   }
-  .showcase-cards::-webkit-scrollbar { height: 6px; }
-  .showcase-cards::-webkit-scrollbar-track { background: var(--border); border-radius: 3px; }
-  .showcase-cards::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
-  .showcase-cards .person-card { flex: 0 0 150px; scroll-snap-align: start; }
-
-  /* Scroll arrows */
-  .scroll-btn {
-    position: absolute; top: 50%; transform: translateY(-60%); z-index: 3;
-    width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--border);
-    background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.12); cursor: pointer;
-    display: flex; align-items: center; justify-content: center; font-size: .9rem; color: var(--dark);
-    transition: all .2s;
-  }
-  .scroll-btn:hover { background: var(--dark); color: #fff; border-color: var(--dark); }
-  .scroll-btn.scroll-left { left: -14px; }
-  .scroll-btn.scroll-right { right: -14px; }
-  .scroll-btn.hidden { opacity: 0; pointer-events: none; }
+  .scroll-btn { display: none; }
 
   /* ── PERSON CARDS ── */
   .cards-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 12px; }
@@ -211,7 +188,7 @@
     .stats-bar { gap: 8px; flex-wrap: wrap; padding: 14px 16px; }
     .stat-num { font-size: 1.3rem; }
     .stat-label { font-size: .62rem; }
-    .showcase-cards .person-card { flex: 0 0 140px; }
+    .showcase-cards { grid-template-columns: repeat(4, 1fr); }
     .results-table-wrap { font-size: .78rem; }
     thead th { padding: 10px 8px; font-size: .65rem; }
     tbody td { padding: 8px; }
@@ -232,14 +209,22 @@
     .section-heading { font-size: 1.15rem; }
     .stats-bar { padding: 12px; }
     .stat-num { font-size: 1.1rem; }
-    .showcase-cards .person-card { flex: 0 0 130px; }
-    .scroll-btn { display: none; }
-    thead th:nth-child(6), tbody td:nth-child(6) { display: none; }
+    .showcase-cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    thead th:nth-child(6), tbody td:nth-child(6),
+    thead th:nth-child(7), tbody td:nth-child(7),
+    thead th:nth-child(8), tbody td:nth-child(8) { display: none; }
+    thead th { padding: 8px 6px; font-size: .6rem; }
+    tbody td { padding: 7px 6px; font-size: .78rem; }
+    .td-achievement { display: none; }
     .filter-bar { gap: 8px; }
     .filter-bar input[type="text"] { min-width: 140px; font-size: .82rem; padding: 8px 12px; }
     .filter-bar select { font-size: .82rem; padding: 8px 10px; }
-    .method-formula .seg { font-size: .55rem; }
+    .method-formula { flex-direction: column; height: auto; gap: 3px; border-radius: 6px; }
+    .method-formula .seg { flex: none; height: 26px; border-radius: 4px; justify-content: flex-start; padding: 0 10px; font-size: .6rem; }
     .method-legend { flex-wrap: wrap; gap: 6px; }
+    .method-legend span { font-size: .6rem; }
+    .featured-intro { font-size: .88rem; }
+    .method-text { font-size: .85rem; }
   }
 
   @media (max-width: 480px) {
@@ -248,20 +233,33 @@
     .card-body { padding: 10px; }
     .card-name { font-size: .82rem; }
     .card-stat-line { font-size: .58rem; }
-    .stats-bar { justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .stats-bar { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 12px 16px; }
     .stat-num { font-size: 1rem; }
     .stat-label { font-size: .58rem; }
-    .showcase-cards .person-card { flex: 0 0 120px; }
+    .showcase-cards { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .showcase-row-title { font-size: .95rem; }
+    thead th:nth-child(3), tbody td:nth-child(3),
     thead th:nth-child(5), tbody td:nth-child(5),
     thead th:nth-child(6), tbody td:nth-child(6),
-    thead th:nth-child(7), tbody td:nth-child(7) { display: none; }
-    .article-prose { padding: 20px 16px; border-radius: 12px; }
+    thead th:nth-child(7), tbody td:nth-child(7),
+    thead th:nth-child(8), tbody td:nth-child(8) { display: none; }
+    .results-table-wrap { overflow-x: hidden; }
+    thead th { padding: 7px 5px; font-size: .58rem; }
+    tbody td { padding: 6px 5px; font-size: .75rem; }
+    .td-rank { width: 32px; font-size: .8rem; }
+    .filter-bar { flex-direction: column; }
+    .filter-bar input[type="text"] { min-width: 100%; }
+    .filter-bar select { width: 100%; }
+    .filter-count { margin-left: 0; text-align: center; }
+    .featured-section, .table-section, .showcase-section { padding-left: 12px; padding-right: 12px; }
+    .article-prose { padding: 20px 16px; border-radius: 12px; margin-left: 12px; margin-right: 12px; }
     .article-prose p:first-child::first-letter { font-size: 2.2rem; }
-    .featured-intro { padding: 16px 18px; border-radius: 12px; }
+    .featured-intro { padding: 16px 18px; border-radius: 12px; font-size: .84rem; }
     .featured-intro > strong:first-of-type { font-size: .98rem; }
     .cat-desc { font-size: .84rem; padding: 10px 14px; border-radius: 10px; }
     .method-wrap { padding: 16px 18px; border-radius: 12px; }
+    .method-note { font-size: .82rem; }
+    .method-legend span { font-size: .58rem; }
   }
 </style>
 </head>
