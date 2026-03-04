@@ -157,9 +157,8 @@
   tbody tr:nth-child(even) { background: #fafafa; }
   tbody tr:nth-child(even):hover { background: #f5f5f5; }
   tbody td { padding: 11px 14px; vertical-align: middle; }
-  /* Show only Name (col2), Category (col3), Achievement (col8) */
+  /* Hide rank, Instagram, TikTok, Google — keep Name, Category, Flags, Achievement */
   thead th:nth-child(1), tbody td:nth-child(1),
-  thead th:nth-child(4), tbody td:nth-child(4),
   thead th:nth-child(5), tbody td:nth-child(5),
   thead th:nth-child(6), tbody td:nth-child(6),
   thead th:nth-child(7), tbody td:nth-child(7) { display: none; }
@@ -216,6 +215,7 @@
     .stats-bar { padding: 12px; }
     .stat-num { font-size: 1.1rem; }
     .showcase-cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    thead th:nth-child(4), tbody td:nth-child(4) { display: none; }
     thead th { padding: 8px 6px; font-size: .6rem; }
     tbody td { padding: 7px 6px; font-size: .78rem; }
     .td-achievement { max-width: 200px; font-size: .72rem; }
@@ -322,7 +322,7 @@
       <span><span class="dot" style="background:#457B9D"></span> Instagram - # ndjekës</span>
       <span><span class="dot" style="background:#2A9D8F"></span> TikTok - # ndjekës</span>
       <span><span class="dot" style="background:#6A4C93"></span> Ambasadore - arritjet (çmime, tituj, rekorde)</span>
-      <span><span class="dot" style="background:#E76F51"></span> Presence Online - prencë digjitale</span>
+      <span><span class="dot" style="background:#E76F51"></span> Presence Online</span>
     </div>
     <p class="method-note">Vlerësimi i Ambasadores siguron që figura historike, shkencore dhe sportive pa prani në rrjete sociale të vlerësohen sipas arritjeve të tyre. Të dhënat u analizuan nga ekipa e dua.com në Shkurt 2026.</p>
   </div>
