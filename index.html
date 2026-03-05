@@ -2561,23 +2561,17 @@ buildCategoryRows();
 populateCatFilter();
 buildTable();
 
-// &#9472;&#9472; WORDPRESS ISOLATION: strip parent container padding &#9472;&#9472;
+// &#9472;&#9472; WORDPRESS ISOLATION: strip parent container spacing (keep padding-top for fixed header) &#9472;&#9472;
 (function() {
   var app = document.getElementById('iwd-app');
   if (!app) return;
   var el = app.parentElement;
   while (el && el !== document.documentElement) {
-    if (el === document.body) {
-      // Only strip horizontal padding on body &#8212; keep padding-top for fixed header
-      el.style.setProperty('padding-left', '0', 'important');
-      el.style.setProperty('padding-right', '0', 'important');
-    } else {
-      el.style.setProperty('padding', '0', 'important');
-      el.style.setProperty('margin-top', '0', 'important');
-      el.style.setProperty('margin-bottom', '0', 'important');
-    }
-    el.style.setProperty('margin-left', '0', 'important');
-    el.style.setProperty('margin-right', '0', 'important');
+    // Keep padding-top everywhere &#8212; WordPress uses it for fixed/sticky header offset
+    el.style.setProperty('padding-left', '0', 'important');
+    el.style.setProperty('padding-right', '0', 'important');
+    el.style.setProperty('padding-bottom', '0', 'important');
+    el.style.setProperty('margin', '0', 'important');
     el.style.setProperty('max-width', 'none', 'important');
     el = el.parentElement;
   }
