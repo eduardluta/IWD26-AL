@@ -13,15 +13,11 @@
   @font-face { font-family: 'TT Norms Pro'; src: local('TT Norms Pro Black'), local('TTNormsPro-Black'); font-weight: 900; font-style: normal; }
 </style>
 <style>
-  /* WordPress isolation: reset theme styles inside our container */
-  #iwd-app, #iwd-app *, #iwd-app *::before, #iwd-app *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  #iwd-app { font-family: 'TT Norms Pro', sans-serif !important; line-height: 1.5; -webkit-font-smoothing: antialiased; }
-  #iwd-app ul, #iwd-app ol { list-style: none !important; margin: 0 !important; padding: 0 !important; }
+  /* WordPress isolation: targeted overrides only */
+  #iwd-app { font-family: 'TT Norms Pro', sans-serif !important; margin: 0 !important; padding: 0 !important; }
+  #iwd-app ul, #iwd-app ol { list-style: none !important; }
   #iwd-app li { list-style: none !important; }
-  #iwd-app li::marker { content: none !important; display: none !important; }
-  #iwd-app img { max-width: 100%; height: auto; }
-  #iwd-app table { border-collapse: collapse; }
-  #iwd-app a { text-decoration: none; color: inherit; }
+  #iwd-app li::marker { content: none !important; display: none !important; font-size: 0 !important; }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --accent: #FF384F;
