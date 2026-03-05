@@ -2561,15 +2561,16 @@ buildCategoryRows();
 populateCatFilter();
 buildTable();
 
-// &#9472;&#9472; WORDPRESS ISOLATION: strip parent container padding &#9472;&#9472;
+// &#9472;&#9472; WORDPRESS ISOLATION: strip parent container horizontal padding &#9472;&#9472;
 (function() {
   var app = document.getElementById('iwd-app');
   if (!app) return;
   var el = app.parentElement;
   while (el && el !== document.body && el !== document.documentElement) {
-    el.style.padding = '0';
-    el.style.paddingTop = '0';
-    el.style.margin = '0';
+    el.style.paddingLeft = '0';
+    el.style.paddingRight = '0';
+    el.style.marginLeft = '0';
+    el.style.marginRight = '0';
     el.style.maxWidth = 'none';
     el = el.parentElement;
   }
