@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
 <style>
   /* WordPress isolation: override theme styles */
-  #iwd-app { padding: 0 !important; margin-top: 0 !important; font-family: 'Inter', sans-serif !important; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  #iwd-app { padding: 0 !important; margin: 0 !important; font-family: 'Inter', sans-serif !important; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
   #iwd-app div, #iwd-app span, #iwd-app p, #iwd-app a, #iwd-app td, #iwd-app th,
   #iwd-app h1, #iwd-app h2, #iwd-app h3, #iwd-app h4, #iwd-app h5, #iwd-app li,
   #iwd-app strong, #iwd-app em, #iwd-app input, #iwd-app select, #iwd-app button,
@@ -2566,15 +2566,13 @@ buildTable();
   var app = document.getElementById('iwd-app');
   if (!app) return;
   var el = app.parentElement;
-  while (el && el !== document.body && el !== document.documentElement) {
-    el.style.paddingLeft = '0';
-    el.style.paddingRight = '0';
-    el.style.paddingTop = '0';
-    el.style.paddingBottom = '0';
-    el.style.marginLeft = '0';
-    el.style.marginRight = '0';
-    el.style.marginTop = '0';
-    el.style.maxWidth = 'none';
+  while (el && el !== document.documentElement) {
+    el.style.setProperty('padding', '0', 'important');
+    el.style.setProperty('margin-left', '0', 'important');
+    el.style.setProperty('margin-right', '0', 'important');
+    el.style.setProperty('margin-top', '0', 'important');
+    el.style.setProperty('margin-bottom', '0', 'important');
+    el.style.setProperty('max-width', 'none', 'important');
     el = el.parentElement;
   }
 })();
