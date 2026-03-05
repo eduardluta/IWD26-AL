@@ -188,6 +188,7 @@
   @media (max-width: 900px) {
     .cards-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
     .card-photo { height: 100px; }
+    .stat-social { display: none !important; }
     .featured-section, .table-section, .showcase-section { padding-left: 16px; padding-right: 16px; }
     .stats-bar { gap: 8px; flex-wrap: wrap; padding: 14px 16px; }
     .stat-num { font-size: 1.3rem; }
@@ -2318,9 +2319,9 @@ function buildFeaturedCards() {
         <div class="card-name">${p.name}</div>
         <div class="card-stats">
           <div class="card-stat-line card-flags">${flags}</div>
-          <div class="card-stat-line"><span class="stat-icon">${IG_ICON}</span> <span class="stat-val">${igDisplay}</span></div>
-          <div class="card-stat-line"><span class="stat-icon">&#9834;</span> <span class="stat-val">${ttDisplay}</span></div>
-          <div class="card-stat-line"><span class="stat-icon">${G_ICON}</span> <span class="stat-val">${gDisplay}</span></div>
+          <div class="card-stat-line stat-social"><span class="stat-icon">${IG_ICON}</span> <span class="stat-val">${igDisplay}</span></div>
+          <div class="card-stat-line stat-social"><span class="stat-icon">&#9834;</span> <span class="stat-val">${ttDisplay}</span></div>
+          <div class="card-stat-line stat-social"><span class="stat-icon">${G_ICON}</span> <span class="stat-val">${gDisplay}</span></div>
         </div>
       </div>`;
     container.appendChild(card);
@@ -2392,9 +2393,9 @@ function buildCategoryRows() {
           <div class="card-name">${p.name}</div>
           <div class="card-stats">
             <div class="card-stat-line card-flags">${flags}</div>
-            <div class="card-stat-line"><span class="stat-icon">${IG_ICON}</span> <span class="stat-val">${igDisplay}</span></div>
-            <div class="card-stat-line"><span class="stat-icon">&#9834;</span> <span class="stat-val">${ttDisplay}</span></div>
-            <div class="card-stat-line"><span class="stat-icon">${G_ICON}</span> <span class="stat-val">${gDisplay}</span></div>
+            <div class="card-stat-line stat-social"><span class="stat-icon">${IG_ICON}</span> <span class="stat-val">${igDisplay}</span></div>
+            <div class="card-stat-line stat-social"><span class="stat-icon">&#9834;</span> <span class="stat-val">${ttDisplay}</span></div>
+            <div class="card-stat-line stat-social"><span class="stat-icon">${G_ICON}</span> <span class="stat-val">${gDisplay}</span></div>
           </div>
         </div>`;
       cards.appendChild(card);
