@@ -25,6 +25,8 @@
     --bg: #f7f7f8;
   }
   body { font-family: 'TT Norms Pro', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  /* When inside an iframe (WordPress embed), use transparent background */
+  body.in-iframe { background: transparent; --bg: transparent; }
 
   /* &#9472;&#9472; HERO &#9472;&#9472; */
   .hero { overflow: hidden; background: var(--accent); }
@@ -2544,6 +2546,21 @@ buildFeaturedCards();
 buildCategoryRows();
 populateCatFilter();
 buildTable();
+
+// &#9472;&#9472; IFRAME SUPPORT (WordPress embed) &#9472;&#9472;
+if (window !== window.parent) {
+  document.body.classList.add('in-iframe');
+  function reportHeight() {
+    var h = document.documentElement.scrollHeight;
+    window.parent.postMessage({ type: 'iwd-height', height: h }, '*');
+  }
+  reportHeight();
+  window.addEventListener('resize', reportHeight);
+  // Re-report after images load and after tab/filter changes
+  window.addEventListener('load', function() { setTimeout(reportHeight, 500); });
+  new MutationObserver(function() { setTimeout(reportHeight, 200); })
+    .observe(document.body, { childList: true, subtree: true });
+}
 </script>
 </body>
 </html>
