@@ -15,9 +15,11 @@
   #iwd-app strong, #iwd-app em, #iwd-app input, #iwd-app select, #iwd-app button,
   #iwd-app label, #iwd-app small { font-family: 'Inter', sans-serif !important; }
   #iwd-app ul, #iwd-app ol { list-style: none !important; list-style-type: none !important; padding-left: 0 !important; margin-left: 0 !important; }
-  #iwd-app li { list-style: none !important; list-style-type: none !important; padding-left: 0 !important; }
-  #iwd-app li::before { content: none !important; display: none !important; }
+  #iwd-app li:not(.featured-intro li) { list-style: none !important; list-style-type: none !important; padding-left: 0 !important; }
+  #iwd-app li:not(.featured-intro li)::before { content: none !important; display: none !important; }
   #iwd-app li::marker { content: none !important; display: none !important; font-size: 0 !important; }
+  #iwd-app .featured-intro li { padding-left: 22px !important; }
+  #iwd-app .featured-intro li::before { content: '' !important; display: block !important; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
   #iwd-app table { border-spacing: 0 !important; border-collapse: collapse !important; }
   #iwd-app table td, #iwd-app table th { border: none !important; }
   .social-cell img, .social-cell svg { vertical-align: middle; display: inline-block; }
