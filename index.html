@@ -2259,10 +2259,16 @@ function catLabel(cat) { return CAT_SQ[cat] || cat; }
 // Format numbers: 115,700 → 115.7K, 14,376,300 → 14.4M, 88.7M stays
 function fmtNum(val) {
   if (!val || val === '—') return '—';
-  // Already formatted with M/K suffix
-  if (/[MK]$/i.test(val.toString().trim())) return val;
+  const s = val.toString().trim();
+  // Already formatted with M/K suffix — clean up decimals (e.g. "391.0K" → "391K")
+  if (/[MK]$/i.test(s)) {
+    const suffix = s.slice(-1);
+    const num = parseFloat(s.slice(0, -1));
+    if (isNaN(num)) return s;
+    return Math.round(num) + suffix;
+  }
   // Parse the raw number (remove commas)
-  const raw = parseFloat(val.toString().replace(/,/g, ''));
+  const raw = parseFloat(s.replace(/,/g, ''));
   if (isNaN(raw)) return val;
   if (raw >= 1000000) return Math.round(raw / 1000000) + 'M';
   if (raw >= 1000) return Math.round(raw / 1000) + 'K';
