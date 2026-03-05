@@ -25,8 +25,8 @@
     --bg: #f7f7f8;
   }
   body { font-family: 'TT Norms Pro', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-  /* When inside an iframe (WordPress embed), use transparent background */
-  body.in-iframe { background: transparent; --bg: transparent; }
+  /* When inside an iframe (WordPress embed), match parent page */
+  body.in-iframe { background: #fff; --bg: #fff; min-height: 0; }
 
   /* &#9472;&#9472; HERO &#9472;&#9472; */
   .hero { overflow: hidden; background: var(--accent); }
