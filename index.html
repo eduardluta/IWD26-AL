@@ -2567,11 +2567,17 @@ buildTable();
   if (!app) return;
   var el = app.parentElement;
   while (el && el !== document.documentElement) {
-    el.style.setProperty('padding', '0', 'important');
+    if (el === document.body) {
+      // Only strip horizontal padding on body &#8212; keep padding-top for fixed header
+      el.style.setProperty('padding-left', '0', 'important');
+      el.style.setProperty('padding-right', '0', 'important');
+    } else {
+      el.style.setProperty('padding', '0', 'important');
+      el.style.setProperty('margin-top', '0', 'important');
+      el.style.setProperty('margin-bottom', '0', 'important');
+    }
     el.style.setProperty('margin-left', '0', 'important');
     el.style.setProperty('margin-right', '0', 'important');
-    el.style.setProperty('margin-top', '0', 'important');
-    el.style.setProperty('margin-bottom', '0', 'important');
     el.style.setProperty('max-width', 'none', 'important');
     el = el.parentElement;
   }
