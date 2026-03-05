@@ -2569,7 +2569,7 @@ buildTable();
   while (el && el !== document.documentElement) {
     // Halve padding-top (keep some for fixed header), strip everything else
     var pt = parseFloat(getComputedStyle(el).paddingTop) || 0;
-    el.style.setProperty('padding-top', Math.round(pt / 2) + 'px', 'important');
+    el.style.setProperty('padding-top', Math.round(pt / 4) + 'px', 'important');
     el.style.setProperty('padding-left', '0', 'important');
     el.style.setProperty('padding-right', '0', 'important');
     el.style.setProperty('padding-bottom', '0', 'important');
