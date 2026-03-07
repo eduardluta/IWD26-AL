@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top 100 Femrat Shqiptare 2026 | dua.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --accent: #FF384F;
+    --accent-light: #FF6B7A;
+    --dark: #333;
+    --card-bg: #fff;
+    --text: #333;
+    --muted: #777;
+    --border: #e8e8e8;
+    --bg: #fff;
+  }
+  body { font-family: 'Inter', sans-serif; background: #fff; color: var(--text); min-height: 100vh; }
+
+  /* -- HEADER -- */
+  .page-header {
+    max-width: 1100px; margin: 0 auto; padding: 32px 32px 0;
+    border-bottom: 3px solid var(--accent);
+    margin-bottom: 0;
+  }
+  .page-header h1 {
+    font-size: 1.6rem; font-weight: 900; color: var(--dark); margin: 0 0 4px; line-height: 1.3;
+  }
+  .page-header h1 span { color: var(--accent); }
+  .page-header .credit {
+    font-size: .78rem; color: var(--muted); margin-bottom: 12px; font-weight: 500;
+  }
+  .page-header .credit a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .page-header .credit a:hover { text-decoration: underline; }
+
+  /* -- TABLE SECTION -- */
+  .table-section { max-width: 1100px; margin: 0 auto; padding: 20px 32px 40px; }
+
+  .section-heading { font-size: 1.4rem; font-weight: 900; color: var(--dark); margin-bottom: 20px; }
+
+  .filter-bar { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 20px; padding: 20px 0 0; }
+  .filter-bar input[type="text"] {
+    flex: 1; min-width: 200px; padding: 10px 16px; border: 1.5px solid var(--border);
+    border-radius: 8px; font-size: .88rem; font-family: inherit; outline: none; transition: border-color .2s;
+  }
+  .filter-bar input[type="text"]:focus { border-color: var(--accent); }
+  .filter-bar select {
+    padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 8px;
+    font-size: .88rem; font-family: inherit; background: #fff; cursor: pointer; outline: none;
+  }
+  .filter-bar select:focus { border-color: var(--accent); }
+  .filter-count { font-size: .82rem; color: var(--muted); margin-left: auto; }
+
+  .results-table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,.07); -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; background: #fff; font-size: .83rem; }
+  thead tr { background: var(--dark); color: #fff; }
+  thead th { padding: 13px 14px; text-align: left; font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; white-space: nowrap; cursor: pointer; user-select: none; }
+  thead th:hover { background: #444; }
+  thead th.sort-asc::after { content: ' \2191'; opacity: .8; }
+  thead th.sort-desc::after { content: ' \2193'; opacity: .8; }
+  tbody tr { border-bottom: 1px solid #f0f0f0; transition: background .15s; }
+  tbody tr:hover { background: #fafafa; }
+  tbody tr:nth-child(even) { background: #fafafa; }
+  tbody tr:nth-child(even):hover { background: #f5f5f5; }
+  tbody td { padding: 11px 14px; vertical-align: middle; }
+  .td-rank { font-weight: 700; color: var(--dark); font-size: .9rem; text-align: center; width: 48px; }
+  .rank-medal { font-size: 1rem; }
+  .td-name { font-weight: 600; color: var(--dark); }
+  .td-flags { font-size: 1.1rem; letter-spacing: 2px; white-space: nowrap; text-align: center; }
+  .cat-badge { display: inline-block; padding: 3px 9px; border-radius: 20px; font-size: .68rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; white-space: nowrap; }
+  .td-achievement { max-width: 400px; color: #555; font-size: .78rem; line-height: 1.45; }
+  .social-cell { font-size: .78rem; color: #444; white-space: nowrap; text-align: left; vertical-align: middle; }
+  .social-cell img, .social-cell svg { vertical-align: middle; display: inline-block; }
+
+  /* === RESPONSIVE === */
+
+  @media (max-width: 900px) {
+    thead th:nth-child(5), tbody td:nth-child(5),
+    thead th:nth-child(6), tbody td:nth-child(6),
+    thead th:nth-child(7), tbody td:nth-child(7) { display: none; }
+    .table-section { padding-left: 16px; padding-right: 16px; }
+    .page-header { padding-left: 16px; padding-right: 16px; }
+    .results-table-wrap { font-size: .78rem; }
+    thead th { padding: 10px 8px; font-size: .65rem; }
+    tbody td { padding: 8px; }
+    .td-achievement { max-width: 180px; font-size: .72rem; }
+  }
+
+  @media (max-width: 680px) {
+    thead th:nth-child(4), tbody td:nth-child(4) { display: none; }
+    thead th { padding: 8px 6px; font-size: .6rem; }
+    tbody td { padding: 7px 6px; font-size: .78rem; }
+    .td-achievement { max-width: 200px; font-size: .72rem; }
+    .filter-bar { gap: 8px; }
+    .filter-bar input[type="text"] { min-width: 140px; font-size: .82rem; padding: 8px 12px; }
+    .filter-bar select { font-size: .82rem; padding: 8px 10px; }
+    .section-heading { font-size: 1.15rem; }
+    .page-header h1 { font-size: 1.25rem; }
+  }
+
+  @media (max-width: 480px) {
+    .results-table-wrap { overflow-x: hidden; }
+    thead th { padding: 7px 5px; font-size: .58rem; }
+    tbody td { padding: 6px 5px; font-size: .75rem; }
+    .td-achievement { max-width: 140px; font-size: .68rem; }
+    .filter-bar { flex-direction: column; }
+    .filter-bar input[type="text"] { min-width: 100%; }
+    .filter-bar select { width: 100%; }
+    .filter-count { margin-left: 0; text-align: center; }
+    .table-section { padding-left: 12px; padding-right: 12px; }
+    .page-header { padding-left: 12px; padding-right: 12px; }
+    .page-header h1 { font-size: 1.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="page-header">
+  <h1>Top 100 <span>Femrat Shqiptare</span> 2026</h1>
+  <div class="credit">Burimi: <a href="https://dua.com" target="_blank" rel="noopener">dua.com</a></div>
+</header>
+
+<!-- TABLE -->
+<section class="table-section" id="table">
+  <div class="filter-bar">
+    <input type="text" id="search-input" placeholder="K&euml;rko sipas emrit, profesionit, vendit...">
+    <select id="cat-filter"><option value="">T&euml; gjitha kategorit&euml;</option></select>
+    <span class="filter-count" id="filter-count">100 rezultate</span>
+  </div>
+  <div class="results-table-wrap">
+    <table id="results-table">
+      <thead><tr>
+        <th data-col="rank">#</th>
+        <th data-col="name">Emri</th>
+        <th data-col="category">Kategoria</th>
+        <th data-col="country"></th>
+        <th data-col="instagram">Instagram</th>
+        <th data-col="tiktok">TikTok</th>
+        <th data-col="google">Google</th>
+        <th data-col="achievement">Arritja Kryesore</th>
+      </tr></thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+</section>
+
+<script>
+// Social media icons
+const G_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" style="width:14px;height:14px;vertical-align:middle"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59a14.5 14.5 0 0 1 0-9.18l-7.98-6.19a24.0 24.0 0 0 0 0 21.56l7.98-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>`;
+const IG_ICON = '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAACMUlEQVR42iXLPUhVYRyA8ef/nvec67lXSwuzVIi4SzjU0AfYFgWBBA1NQTRE0BZFBX0QLQnR0OKaiHNfBBVSa9IQ1VKBYUSmxj0imnTvPfec933/DU7Pb3kkyzJVQHwAG0EtRgRQBUDYdGg51AUkMqgqVgEJitYSpFkSZhcILY+KIYgQVJBahcrIVkw1JrQdYgQrPqC1CtGnReTCE9z8Or6/n8ImlFFMYSvkqyXU+9g5cYR0fx+h6ZDGyooa59ly+AEhD8jkebCCOggmwhcB74Xft2cpU8vwzBhiDZZqQvR+jmRxHn12l/D0A53pd5Q7BihKIewZoHbrGLvHR/l19iXl1zUqowNYVYO4FuxL0S0GM/2KrqOHqFwZI3Qc5edl2vffkt45Qfd2g/zLQQSDAl2KDneADjKSIjeOYy5PEV2cIjk4SDy3hBVPWjSJ8CiCJQCVgAx2IPXoUAcShW0FUhaYxFJNPeIcqWtThAAiWFSg4mGogJ4IupfhzWN4eA68IJOvsdlPQhpR7bTwweMAi1e0pwt6FyHpwOmTMPMCHn2HjQS+raHXToEvidtLSM2CgjSyFRV19H48Q9ws0QP3oIggB0oBH6FBMdcnCK7G6vNxNI6QrPFH1VSx+Rd6ftwkbixAuQv+xrBuYT2C+Q18tc7GpauUe+tIO0eyLFM0oCZFtEWcz0HeBmfACRSgURU3VEeTFMlz1Bik0WioiIAGkIggKWIEFQUBYbOUOeL95gT8B4w3EGWs3oFUAAAAAElFTkSuQmCC" alt="IG" style="width:14px;height:14px;vertical-align:middle;border-radius:3px">';
+const TT_ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:14px;height:14px;vertical-align:middle"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.27 0 .54.04.8.1v-3.5a6.37 6.37 0 0 0-.8-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.73a8.3 8.3 0 0 0 4.18 1.12V6.41s-1.62.03-2.42.28z" fill="#111"/></svg>';
+
+const TOP100 = [
+  {
+    "rank": 1,
+    "name": "Dua Lipa",
+    "category": "Music",
+    "profession": "Pop Singer / Songwriter",
+    "country": "UK (Kosovo-Albanian)",
+    "instagram": "88.7M",
+    "ig_rank": "#1",
+    "google": "49,199,988",
+    "gs_rank": "#1",
+    "tiktok": "11.2M",
+    "tt_rank": "#1",
+    "ambassador": "100",
+    "score": "97.5",
+    "achievement": "3x fituese e Grammy, 7x BRIT Awards, ikona globale e popit, fytyra e Versace/YSL/Puma"
+  },
+  {
+    "rank": 2,
+    "name": "Bebe Rexha",
+    "category": "Music",
+    "profession": "Singer / Songwriter / Producer",
+    "country": "USA (Albanian)",
+    "instagram": "12.0M",
+    "ig_rank": "#3",
+    "google": "4,416,000",
+    "gs_rank": "#6",
+    "tiktok": "8.5M",
+    "tt_rank": "#2",
+    "ambassador": "90",
+    "score": "36.6",
+    "achievement": "3x e nominuar p\u00EBr Grammy, \"Meant to Be\" 8x Platinum, shkroi k\u00EBng\u00EB p\u00EBr Eminem dhe Rihanna"
+  },
+  {
+    "rank": 3,
+    "name": "Rita Ora",
+    "category": "Music",
+    "profession": "Singer / TV Personality / Actress",
+    "country": "UK (Kosovo-Albanian)",
+    "instagram": "16.0M",
+    "ig_rank": "#2",
+    "google": "6,600,000",
+    "gs_rank": "#2",
+    "tiktok": "3.1M",
+    "tt_rank": "#3",
+    "ambassador": "85",
+    "score": "31.4",
+    "achievement": "4 k\u00EBng\u00EB #1 n\u00EB UK, gjyqtare n\u00EB The Voice UK dhe Masked Singer, ambasadore e UNICEF"
+  },
+  {
+    "rank": 4,
+    "name": "Ava Max",
+    "category": "Music",
+    "profession": "Pop Singer / Songwriter",
+    "country": "USA (Albanian)",
+    "instagram": "3.0M",
+    "ig_rank": "#6",
+    "google": "5,400,000",
+    "gs_rank": "#4",
+    "tiktok": "2.9M",
+    "tt_rank": "#5",
+    "ambassador": "85",
+    "score": "26.6",
+    "achievement": "\u201CSweet but Psycho\u201C #1 n\u00EB 22 shtete, 1B+ shikime n\u00EB YouTube, Atlantic Records"
+  },
+  {
+    "rank": 5,
+    "name": "Mother Teresa",
+    "category": "Historical",
+    "profession": "Nun / Humanitarian / Saint",
+    "country": "Albania / India",
+    "instagram": "\u2014",
+    "ig_rank": "\u2014",
+    "google": "6,600,000",
+    "gs_rank": "#3",
+    "tiktok": "\u2014",
+    "tt_rank": "\u2014",
+    "ambassador": "100",
+    "score": "21.7",
+    "achievement": "\u00C7mimi Nobel p\u00EBr Paqe 1979, shenjt\u00EBruar nga Papa Fran\u00E7esku 2016, themeloi Misionaret e Bamir\u00EBsis\u00EB"
+  },
+  {
+    "rank": 6,
+    "name": "Era Istrefi",
+    "category": "Music",
+    "profession": "Pop Singer / Dancer",
+    "country": "Kosovo",
+    "instagram": "1.0M",
+    "ig_rank": "#22",
+    "google": "397,200",
+    "gs_rank": "#19",
+    "tiktok": "2.2M",
+    "tt_rank": "#8",
+    "ambassador": "80",
+    "score": "20.5",
+    "achievement": "\"BonBon\" hit global me mbi 900 milion shikime, performuese n\u00EB FIFA World Cup 2018 n\u00EB Rusi"
+  },
+  {
+    "rank": 7,
+    "name": "Mira Murati",
+    "category": "Business",
+    "profession": "Tech Executive",
+    "country": "Albania",
+    "instagram": "\u2014",
+    "ig_rank": "\u2014",
+    "google": "2,412,000",
+    "gs_rank": "#8",
+    "tiktok": "\u2014",
+    "tt_rank": "\u2014",
+    "ambassador": "92",
+    "score": "17.3",
+    "achievement": "Ish-CTO e OpenAI (deri n\u00EB shtator 2024), udh\u00EBhoqi zhvillimin e ChatGPT dhe DALL-E, figur\u00EB qendrore e AI-s\u00EB globale"
+  },
+  {
+    "rank": 8,
+    "name": "Loredana Zefi",
+    "category": "Music",
+    "profession": "Rapper / Entrepreneur",
+    "country": "Switzerland (Kosovo-Albanian)",
+    "instagram": "3.0M",
+    "ig_rank": "#7",
+    "google": "217,200",
+    "gs_rank": "#29",
+    "tiktok": "2.4M",
+    "tt_rank": "#6",
+    "ambassador": "75",
+    "score": "20.5",
+    "achievement": "Albumi \"King Lori\" Top 3 n\u00EB Austri, Gjermani dhe Zvic\u00EBr, reperja m\u00EB e njohur shqiptare n\u00EB vendet gjermanofol\u00EBse"
+  },
+  {
+    "rank": 9,
+    "name": "Eliza Dushku",
+    "category": "Acting",
+    "profession": "Actress / Producer / Counselor",
+    "country": "USA (Albanian)",
+    "instagram": "748.0K",
+    "ig_rank": "#34",
+    "google": "5,400,000",
+    "gs_rank": "#5",
+    "tiktok": "50.0K",
+    "tt_rank": "#37",
+    "ambassador": "72",
+    "score": "20.2",
+    "achievement": "Buffy, Dollhouse, prodhuese n\u00EB Netflix, mbi 30 filma dhe seriale"
+  },
+  {
+    "rank": 10,
+    "name": "Krissy Cela",
+    "category": "Business",
+    "profession": "Entrepreneur / Fitness Influencer",
+    "country": "UK (Albanian)",
+    "instagram": "3.1M",
+    "ig_rank": "#5",
+    "google": "217,200",
+    "gs_rank": "#30",
+    "tiktok": "1.2M",
+    "tt_rank": "#11",
+    "ambassador": "82",
+    "score": "19.9",
+    "achievement": "Forbes 30 Under 30, themeluese e EvolveYou & Oner Active ($34M+ t\u00EB ardhura)"
+  },
+  {"rank":11,"name":"Kosovare Asllani","category":"Sports","profession":"Footballer","country":"Sweden (Kosovo-Albanian)","instagram":"341.0K","ig_rank":"#48","google":"486,000","gs_rank":"#17","tiktok":"59.0K","tt_rank":"#34","ambassador":"88","score":"18.7","achievement":"Mbi 200 ndeshje p\u00EBr Suedin\u00EB, medalje argjendi olimpike 2016, medalje bronzi n\u00EB Bot\u00EBrorin 2023"},
+  {"rank":12,"name":"Majlinda Kelmendi","category":"Sports","profession":"Judoka","country":"Kosovo","instagram":"1.0K","ig_rank":"#82","google":"22,800","gs_rank":"#59","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"95","score":"17.6","achievement":"Fituesja e par\u00EB e medaljes olimpike t\u00EB art\u00EB p\u00EBr Kosov\u00EBn (Rio 2016), 2x Kampione Bote, 4x Kampione Evrope"},
+  {"rank":13,"name":"Distria Krasniqi","category":"Sports","profession":"Judoka","country":"Kosovo","instagram":"14.0K","ig_rank":"#72","google":"15,600","gs_rank":"#63","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"92","score":"17.1","achievement":"Fituese e medaljes olimpike t\u00EB art\u00EB (Tokio 2020) dhe argjendit (Paris 2024), #1 Bot\u00EBrore, 3x Kampione Evrope"},
+  {"rank":14,"name":"Nensi Dojaka","category":"Fashion","profession":"Fashion Designer","country":"Albania / UK","instagram":"391.0K","ig_rank":"#46","google":"79,200","gs_rank":"#41","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"88","score":"16.7","achievement":"Fituese e \u00E7mimit LVMH 2021, e diplomuar nga Central Saint Martins, TOP designere mode"},
+  {"rank":15,"name":"Ermonela Jaho","category":"Music","profession":"Operatic Soprano","country":"Albania / International","instagram":"37.0K","ig_rank":"#64","google":"79,200","gs_rank":"#42","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"88","score":"16.6","achievement":"\u201CSopranoja m\u00EB e admiruar n\u00EB bot\u00EB\u201C (The Economist), e rregullt n\u00EB Royal Opera House"},
+  {"rank":16,"name":"Eleni Foureira","category":"Music","profession":"Singer / Performer","country":"Greece (Albanian)","instagram":"1.0M","ig_rank":"#23","google":"177,600","gs_rank":"#32","tiktok":"498.5K","tt_rank":"#18","ambassador":"70","score":"16.6","achievement":"\u201CFuego\u201C Eurovision 2018 (vendi i 2-t\u00EB), mbi 1 miliard shikime n\u00EB YouTube"},
+  {"rank":17,"name":"Masiela Lusha","category":"Acting","profession":"Actress / Author","country":"USA (Albanian)","instagram":"116.0K","ig_rank":"#55","google":"2,412,000","gs_rank":"#9","tiktok":"50.4K","tt_rank":"#36","ambassador":"60","score":"15.9","achievement":"Roli i Carmen n\u00EB serialin \"George Lopez\" (ABC), 2x Young Artist Awards, autore e 4 librave"},
+  {"rank":18,"name":"Inva Mula","category":"Music","profession":"Opera Lyric Soprano","country":"Albania / International","instagram":"15.0K","ig_rank":"#71","google":"97,200","gs_rank":"#37","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"82","score":"15.7","achievement":"Z\u00EBri i Diva Plavalaguna n\u00EB \u201CThe Fifth Element\u201C, soprano n\u00EB La Scala, Met Opera dhe Royal Opera House"},
+  {"rank":19,"name":"Luiza Gega","category":"Sports","profession":"Athlete (Steeplechase)","country":"Albania","instagram":"24.0K","ig_rank":"#69","google":"15,600","gs_rank":"#64","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"80","score":"15.4","achievement":"Kampione Evrope 2022, fituese e medaljes s\u00EB art\u00EB n\u00EB Loj\u00EBrat Evropiane 2023, finaliste e par\u00EB olimpike shqiptare"},
+  {"rank":20,"name":"Vjosa Osmani","category":"Politics","profession":"President of Kosovo","country":"Kosovo","instagram":"209.0K","ig_rank":"#50","google":"217,200","gs_rank":"#31","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"75","score":"14.8","achievement":"Presidentja aktuale e Kosov\u00EBs q\u00EB nga viti 2021, femra m\u00EB e votuar n\u00EB historin\u00EB e Kosov\u00EBs"},
+  {"rank":21,"name":"Nora Gjakova","category":"Sports","profession":"Judoka","country":"Kosovo","instagram":"1.0K","ig_rank":"#83","google":"4,680","gs_rank":"#83","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"75","score":"14.6","achievement":"Fituese e medaljes olimpike t\u00EB art\u00EB n\u00EB Tokio 2020 (57kg), shum\u00EBfishe medalist\u00EB evropiane n\u00EB xhudo"},
+  {"rank":22,"name":"Lara Colturi","category":"Sports","profession":"Alpine Skier","country":"Albania (Italian-born)","instagram":"124.0K","ig_rank":"#54","google":"594,000","gs_rank":"#15","tiktok":"22.0K","tt_rank":"#46","ambassador":"60","score":"14.5","achievement":"Mbajt\u00EBse e flamurit t\u00EB Shqip\u00EBris\u00EB n\u00EB Olimpiad\u00EBn Dim\u00EBrore 2026, skitare n\u00EB FIS World Cup"},
+  {"rank":23,"name":"Teuta Matoshi","category":"Fashion","profession":"Fashion Designer","country":"Kosovo","instagram":"2.0M","ig_rank":"#11","google":"325,200","gs_rank":"#20","tiktok":"161.4K","tt_rank":"#27","ambassador":"55","score":"14.3","achievement":"TOP designere nga Kosova, fustan\u00EBt e saj u b\u00EBn\u00EB virale n\u00EB rrjetet sociale"},
+  {"rank":24,"name":"Atifete Jahjaga","category":"Politics","profession":"Former President of Kosovo","country":"Kosovo","instagram":"31.0K","ig_rank":"#66","google":"52,800","gs_rank":"#50","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"72","score":"14.2","achievement":"Presidentja e par\u00EB fem\u00EBr e Kosov\u00EBs (2011-2016), n\u00EB at\u00EB koh\u00EB kryetarja m\u00EB e re e shtetit n\u00EB bot\u00EB"},
+  {"rank":25,"name":"Lea Ypi","category":"Literature","profession":"Author / Professor","country":"Albania / UK","instagram":"45.0K","ig_rank":"#61","google":"325,200","gs_rank":"#21","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"70","score":"14.1","achievement":"\u201CFree\u201C i p\u00EBrkthyer n\u00EB mbi 30 gjuh\u00EB, Profesoresh\u00EB e Teoris\u00EB Politike n\u00EB LSE"},
+  {"rank":26,"name":"Elhaida Dani","category":"Music","profession":"Singer / Winner The Voice France","country":"Albania / France","instagram":"152.0K","ig_rank":"#53","google":"43,200","gs_rank":"#56","tiktok":"5.0K","tt_rank":"#53","ambassador":"60","score":"14.1","achievement":"Fituese e The Voice of Italy 2013, p\u00EBrfaq\u00EBsuese e Shqip\u00EBris\u00EB n\u00EB Eurovision 2015"},
+  {"rank":27,"name":"Bleona Qereti","category":"Music","profession":"Singer / Actress / Model","country":"Albania / USA","instagram":"650.0K","ig_rank":"#39","google":"79,200","gs_rank":"#43","tiktok":"21.4K","tt_rank":"#47","ambassador":"58","score":"14.0","achievement":"#1 n\u00EB Billboard Dance, 8 albume, role n\u00EB filma me Nicolas Cage dhe John Travolta"},
+  {"rank":28,"name":"Angela Martini","category":"Fashion","profession":"Model / Life Coach / Producer","country":"Albania / Switzerland","instagram":"554.0K","ig_rank":"#43","google":"52,800","gs_rank":"#51","tiktok":"32.0K","tt_rank":"#40","ambassador":"58","score":"13.9","achievement":"Miss Universe Shqip\u00EBria 2010, e 6-ta n\u00EB Miss Universe 2010, Sports Illustrated"},
+  {"rank":29,"name":"Emina Cunmulaj","category":"Fashion","profession":"Model / Philanthropist / Diplomat","country":"USA (Albanian)","instagram":"390.0K","ig_rank":"#47","google":"79,200","gs_rank":"#44","tiktok":"28.5K","tt_rank":"#44","ambassador":"58","score":"13.9","achievement":"Kopertina Vogue/Elle/Marie Claire, Konsulle Nderi e Shqip\u00EBris\u00EB n\u00EB Florida"},
+  {"rank":30,"name":"Rina Lipa","category":"Fashion","profession":"Model / Actress / Influencer","country":"UK (Albanian)","instagram":"951.0K","ig_rank":"#28","google":"1,086,000","gs_rank":"#11","tiktok":"27.6K","tt_rank":"#45","ambassador":"50","score":"13.6","achievement":"Modele n\u00EB fushata p\u00EBr Versace dhe Miu Miu, pjes\u00EBmarr\u00EBse n\u00EB Jav\u00EBn e Mod\u00EBs n\u00EB Milano"},
+  {"rank":31,"name":"Besa Kok\u00EBdhima","category":"Music","profession":"Singer / TV Judge","country":"Albania","instagram":"446.0K","ig_rank":"#45","google":"5,760","gs_rank":"#80","tiktok":"930.0K","tt_rank":"#13","ambassador":"48","score":"13.6","achievement":"Eurovision 2024 \"Titan\", gjyqtare e Voice of Albania q\u00EB nga 2017"},
+  {"rank":32,"name":"Almeda Abazi","category":"Fashion","profession":"Actress / Model","country":"Albania / Turkey","instagram":"659.0K","ig_rank":"#38","google":"266,400","gs_rank":"#26","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"65","score":"13.5","achievement":"Miss Shqip\u00EBria 2008, Miss Globe 2008, aktore n\u00EB serialin turk \"Shekulli i Madh\u00EBrish\u00EBm\""},
+  {"rank":33,"name":"Dhurata Dora","category":"Music","profession":"Singer / Songwriter","country":"Kosovo / Germany","instagram":"3.0M","ig_rank":"#8","google":"486,000","gs_rank":"#18","tiktok":"610.0K","tt_rank":"#15","ambassador":"38","score":"12.7","achievement":"\"Zem\u00EBr\" me Soolking (#1 dhe Platinium n\u00EB 4 shtete), nd\u00EBr k\u00EBng\u00EBtaret shqiptare m\u00EB t\u00EB njohura n\u00EB Evrop\u00EB"},
+  {"rank":34,"name":"Melimtx","category":"Influencer","profession":"Fashion Model / Influencer","country":"Albania / Bosnia","instagram":"4.6M","ig_rank":"#4","google":"2,952,000","gs_rank":"#7","tiktok":"3.1M","tt_rank":"#4","ambassador":"0","score":"12.7","achievement":"3.1M ndjek\u00EBs n\u00EB TikTok, nd\u00EBr influenceret m\u00EB t\u00EB suksesshme shqiptare"},
+  {"rank":35,"name":"Yllka Gashi","category":"Acting","profession":"Actress","country":"Kosovo / USA","instagram":"63.0K","ig_rank":"#60","google":"10,560","gs_rank":"#70","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"62","score":"12.7","achievement":"Aktore n\u00EB \"Hive\" (3 \u00E7mime Sundance, Oscar shortlist), aktore n\u00EB serialin \"Familja Moderne\""},
+  {"rank":36,"name":"Kida","category":"Music","profession":"Pop Singer","country":"Kosovo","instagram":"2.0M","ig_rank":"#12","google":"726,000","gs_rank":"#13","tiktok":"332.0K","tt_rank":"#20","ambassador":"40","score":"12.6","achievement":"Sony Music France, k\u00EBng\u00EBtare shqiptare me shikime rekord n\u00EB YouTube"},
+  {"rank":37,"name":"Vildane Zeneli","category":"Fashion","profession":"Model / Singer","country":"Kosovo / USA","instagram":"730.0K","ig_rank":"#35","google":"5,760","gs_rank":"#81","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"60","score":"12.5","achievement":"Angel i Victoria's Secret, Miss Diaspora 2009, modeloi p\u00EBr Roberto Cavalli dhe Vera Wang"},
+  {"rank":38,"name":"Laura Mersini-Houghton","category":"Science","profession":"Cosmologist / Theoretical Physicist","country":"USA (Albanian)","instagram":"\u2014","ig_rank":"\u2014","google":"8,640","gs_rank":"#74","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"72","score":"12.5","achievement":"Profesoresh\u00EB n\u00EB UNC, pioniere e hipotez\u00EBs s\u00EB multiversit, dokumentar\u00EB n\u00EB BBC, PBS dhe Discovery"},
+  {"rank":39,"name":"Lu\u00E0na Bajrami","category":"Film & Theatre","profession":"Actress/Director","country":"Kosovo/France","instagram":"11.0K","ig_rank":"#74","google":"79,200","gs_rank":"#45","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"60","score":"12.4","achievement":"Aktore n\u00EB filmin \"Portrait of a Lady on Fire\" (Cannes 2019), regjisore e filmit \"The Fourth Wall\""},
+  {"rank":40,"name":"Aferdita Dreshaj","category":"Fashion","profession":"Singer / Model","country":"Kosovo / USA","instagram":"310.0K","ig_rank":"#49","google":"64,800","gs_rank":"#47","tiktok":"31.5K","tt_rank":"#43","ambassador":"48","score":"12.4","achievement":"Miss Universe Kosova e par\u00EB (2011), Top 11 n\u00EB Miss Universe, k\u00EBng\u00EBtare dhe modele"},
+  {"rank":41,"name":"Ronela Hajati","category":"Music","profession":"Pop Singer","country":"Albania","instagram":"855.0K","ig_rank":"#30","google":"64,800","gs_rank":"#48","tiktok":"232.8K","tt_rank":"#26","ambassador":"45","score":"12.4","achievement":"P\u00EBrfaq\u00EBsuese e Shqip\u00EBris\u00EB n\u00EB Eurovision 2022 me \"Sekret\", fituese e Festivalit t\u00EB K\u00EBng\u00EBs"},
+  {"rank":42,"name":"Blerta Basholli","category":"Film & Theatre","profession":"Filmmaker","country":"Kosovo","instagram":"6.0K","ig_rank":"#77","google":"3,120","gs_rank":"#84","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"60","score":"12.3","achievement":"Regjisore e \"Hive\" (2021), fituese e tre \u00E7mimeve n\u00EB Sundance, Oscar shortlist"},
+  {"rank":43,"name":"Anna Oxa","category":"Music","profession":"Singer / Actress / TV Presenter","country":"Italy (Albanian)","instagram":"\u2014","ig_rank":"\u2014","google":"1,086,000","gs_rank":"#12","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"65","score":"12.2","achievement":"2x fituese e Festivalit t\u00EB Sanremos (1989 dhe 1999), p\u00EBrfaq\u00EBsuese n\u00EB Eurovision 1989, 17 albume"},
+  {"rank":44,"name":"Mirela Manjani","category":"Sports","profession":"Athlete","country":"Albania/Greece","instagram":"\u2014","ig_rank":"\u2014","google":"1,680","gs_rank":"#90","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"70","score":"12.2","achievement":"2x Kampione Bote n\u00EB hedhje t\u00EB shtiz\u00EBs, medalje argjendi (2000) dhe bronzi (2004) olimpike p\u00EBr Greqin\u00EB"},
+  {"rank":45,"name":"Anxhela Peristeri","category":"Music","profession":"Singer","country":"Albania","instagram":"616.0K","ig_rank":"#40","google":"34,800","gs_rank":"#57","tiktok":"75.0K","tt_rank":"#32","ambassador":"42","score":"11.6","achievement":"P\u00EBrfaq\u00EBsuese e Shqip\u00EBris\u00EB n\u00EB Eurovision 2021 me \"Karma\", fituese e Festivalit t\u00EB K\u00EBng\u00EBs"},
+  {"rank":46,"name":"Arilena Ara","category":"Music","profession":"Singer / TV Personality","country":"Albania","instagram":"1.6M","ig_rank":"#17","google":"64,800","gs_rank":"#49","tiktok":"21.1K","tt_rank":"#48","ambassador":"40","score":"11.5","achievement":"Fituese e X Factor Albania 2013, p\u00EBrfaq\u00EBsuese n\u00EB Eurovision 2020, gjyqtare e Voice"},
+  {"rank":47,"name":"Arta Dobroshi","category":"Acting","profession":"Actress / Producer","country":"Kosovo","instagram":"\u2014","ig_rank":"\u2014","google":"52,800","gs_rank":"#52","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"65","score":"11.5","achievement":"Aktorja e par\u00EB kosovare n\u00EB Cannes, Berlin dhe Sundance, Ambasadore e Vullnetit t\u00EB Mir\u00EB e OKB-s\u00EB"},
+  {"rank":48,"name":"Laura Fazliu","category":"Sports","profession":"Athlete","country":"Kosovo","instagram":"\u2014","ig_rank":"\u2014","google":"3,120","gs_rank":"#85","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"65","score":"11.4","achievement":"Xhudiste e Kosov\u00EBs, medalje e bronzit olimpik n\u00EB Paris 2024"},
+  {"rank":49,"name":"Detina Zalli","category":"Science","profession":"Cancer Researcher","country":"USA / UK (Albanian)","instagram":"\u2014","ig_rank":"\u2014","google":"1,080","gs_rank":"#94","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"65","score":"11.4","achievement":"Postdoktoratur\u00EB n\u00EB Harvard, Drejtoresh\u00EB e Studimeve Pre-Mjek\u00EBsore n\u00EB Cambridge, NASA STAR Fellow"},
+  {"rank":50,"name":"Elvana Gjata","category":"Music","profession":"Singer / Actress / Entrepreneur","country":"Albania","instagram":"2.0M","ig_rank":"#13","google":"266,400","gs_rank":"#27","tiktok":"284.5K","tt_rank":"#21","ambassador":"35","score":"11.4","achievement":"\"Diva e muzik\u00EBs shqiptare\", mbushi Air Albania Stadium me 25,000 spektator\u00EB, p\u00EBrfaq\u00EBsuese n\u00EB Eurovision"},
+  {"rank":51,"name":"Vlora \u00C7itaku","category":"Politics","profession":"Diplomat / Politician","country":"Kosovo","instagram":"29.0K","ig_rank":"#68","google":"15,600","gs_rank":"#65","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"52","score":"11.2","achievement":"Ambasadore e Kosov\u00EBs n\u00EB SHBA 2015-2021, Zv. Ministre e Jashtme, gazetare lufte"},
+  {"rank":52,"name":"Rona Nishliu","category":"Music","profession":"Singer / Artist","country":"Kosovo","instagram":"18.7K","ig_rank":"#70","google":"10,560","gs_rank":"#71","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"52","score":"11.1","achievement":"Eurovision 2012 (vendi i 5-t\u00EB), artiste avangarde, performanca e njohur \u201CSuus\u201C"},
+  {"rank":53,"name":"Tayna","category":"Music","profession":"Rapper / Singer","country":"Kosovo","instagram":"2.0M","ig_rank":"#14","google":"325,200","gs_rank":"#22","tiktok":"559.8K","tt_rank":"#16","ambassador":"30","score":"11.1","achievement":"Reperja dhe k\u00EBng\u00EBtare kosovare, hiti \"Si Ai\", themeloi Tayna Foundation"},
+  {"rank":54,"name":"Aurela Ga\u00E7e","category":"Music","profession":"Singer / TV Personality","country":"Albania","instagram":"568.0K","ig_rank":"#41","google":"118,800","gs_rank":"#36","tiktok":"82.5K","tt_rank":"#31","ambassador":"38","score":"11.1","achievement":"P\u00EBrfaq\u00EBsuese n\u00EB Eurovision 2011, fituese e shum\u00EB \u00E7mimeve n\u00EB Festivalet e K\u00EBng\u00EBs"},
+  {"rank":55,"name":"Majlinda Bregu","category":"Politics","profession":"Diplomat/Politician","country":"Albania","instagram":"88.0K","ig_rank":"#58","google":"22,800","gs_rank":"#60","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"50","score":"10.9","achievement":"Ish-Sekretare e P\u00EBrgjithshme e RCC (2019-2024), ish-Ministre e Integrimit Evropian"},
+  {"rank":56,"name":"Iris Elezi","category":"Film & Theatre","profession":"Filmmaker / Director","country":"Albania","instagram":"3.5K","ig_rank":"#80","google":"2,040","gs_rank":"#88","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"50","score":"10.8","achievement":"Themeloi Kinematek\u00EBn Shqiptare, \u201CBOTA\u201C fitoi 18 \u00E7mime nd\u00EBrkomb\u00EBtare, u paraqit p\u00EBr Oscar"},
+  {"rank":57,"name":"Dafina Zeqiri","category":"Music","profession":"Singer / Rapper / Fashion Icon","country":"Kosovo","instagram":"2.0M","ig_rank":"#15","google":"325,200","gs_rank":"#23","tiktok":"559.7K","tt_rank":"#17","ambassador":"28","score":"10.8","achievement":"K\u00EBng\u00EBtare dhe artiste kosovare, hite t\u00EB shumta virale, pioniere e mod\u00EBs dhe muzik\u00EBs"},
+  {"rank":58,"name":"Suela Janina","category":"Politics","profession":"UN Ambassador","country":"Albania","instagram":"\u2014","ig_rank":"\u2014","google":"1,680","gs_rank":"#91","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"60","score":"10.7","achievement":"P\u00EBrfaq\u00EBsuese e P\u00EBrhershme n\u00EB OKB (2024-tani), ish-Ambasadore n\u00EB BE"},
+  {"rank":59,"name":"Brisida","category":"Influencer","profession":"TikTok Creator / Dancer","country":"Albania","instagram":"753.0K","ig_rank":"#33","google":"22,800","gs_rank":"#61","tiktok":"2.3M","tt_rank":"#7","ambassador":"15","score":"10.6","achievement":"2.5M+ ndjek\u00EBs n\u00EB TikTok, nd\u00EBr krijueset m\u00EB t\u00EB njohura shqiptare t\u00EB p\u00EBrmbajtjes dixhitale"},
+  {"rank":60,"name":"Anjeza Shahini","category":"Music","profession":"Singer / Entertainer","country":"Albania","instagram":"38.0K","ig_rank":"#63","google":"15,600","gs_rank":"#66","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"48","score":"10.6","achievement":"Shqiptarja e par\u00EB n\u00EB Eurovision (Istanbul 2004), arriti vendin e 7-t\u00EB me 106 pik\u00EB"},
+  {"rank":61,"name":"Juliana Pasha","category":"Music","profession":"Singer","country":"Albania","instagram":"116.0K","ig_rank":"#56","google":"15,600","gs_rank":"#67","tiktok":"18.0K","tt_rank":"#49","ambassador":"35","score":"10.3","achievement":"P\u00EBrfaq\u00EBsuese e Shqip\u00EBris\u00EB n\u00EB Eurovision 2010 n\u00EB Oslo, k\u00EBng\u00EBtare pop me karrier\u00EB 20-vje\u00E7are"},
+  {"rank":62,"name":"Jori Delli","category":"Fashion","profession":"Instagram Model","country":"Albania","instagram":"560.0K","ig_rank":"#42","google":"52,800","gs_rank":"#53","tiktok":"416.0K","tt_rank":"#19","ambassador":"30","score":"10.3","achievement":"Modele mode shqiptaro-italiane, personalitet i njohur i reality TV"},
+  {"rank":63,"name":"Klodiana Shala","category":"Sports","profession":"Sprinter","country":"Albania","instagram":"32.0K","ig_rank":"#65","google":"8,640","gs_rank":"#75","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"45","score":"10.1","achievement":"4x Olimpiane n\u00EB vrapim, mbajt\u00EBse e flamurit t\u00EB Shqip\u00EBris\u00EB n\u00EB Athin\u00EB 2004, mbajt\u00EBse e rekordeve komb\u00EBtare"},
+  {"rank":64,"name":"Elina Duni","category":"Music","profession":"Jazz Singer / Composer","country":"Albania / Switzerland","instagram":"13.0K","ig_rank":"#73","google":"15,600","gs_rank":"#68","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"45","score":"10.1","achievement":"Vokalist\u00EB xhazi zvicerano-shqiptare, artiste e ECM Records, koncerte n\u00EB festivale nd\u00EBrkomb\u00EBtare"},
+  {"rank":65,"name":"Donika G\u00EBrvalla","category":"Politics","profession":"Deputy PM / Foreign Minister","country":"Kosovo","instagram":"5.0K","ig_rank":"#79","google":"840","gs_rank":"#96","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"45","score":"10.1","achievement":"Zv. Kryeministre dhe Ministre e Drejt\u00EBsis\u00EB e Kosov\u00EBs, ish-Ministre e Pun\u00EBve t\u00EB Jashtme, ish-gazetare"},
+  {"rank":66,"name":"Antoneta Kastrati","category":"Film & Theatre","profession":"Filmmaker","country":"Kosovo/USA","instagram":"1.5K","ig_rank":"#81","google":"840","gs_rank":"#97","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"45","score":"10.1","achievement":"Regjisore e \u201CZana\u201C (2019), premier\u00EB n\u00EB Festivalin Nd\u00EBrkomb\u00EBtar t\u00EB Filmit n\u00EB Toronto (TIFF)"},
+  {"rank":67,"name":"Eneda Tarifa","category":"Music","profession":"Singer","country":"Albania","instagram":"683.0K","ig_rank":"#37","google":"28,800","gs_rank":"#58","tiktok":"12.0K","tt_rank":"#51","ambassador":"32","score":"10.0","achievement":"Eurovision 2016 me k\u00EBng\u00EBn \"Fairytale\", fituese e Festivalit t\u00EB K\u00EBng\u00EBs"},
+  {"rank":68,"name":"Adelina Ismaili","category":"Music","profession":"Singer / Songwriter","country":"Kosovo","instagram":"193.0K","ig_rank":"#51","google":"97,200","gs_rank":"#38","tiktok":"14.0K","tt_rank":"#50","ambassador":"32","score":"9.9","achievement":"K\u00EBng\u00EBtare kosovaro-shqiptare me karrier\u00EB mbi 20 vjet, hite si \"Mos m'prek\" dhe \"Luj luj\""},
+  {"rank":69,"name":"Besiana Kadare","category":"Politics","profession":"UN Ambassador","country":"Albania / USA","instagram":"\u2014","ig_rank":"\u2014","google":"10,560","gs_rank":"#72","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"55","score":"9.9","achievement":"Ambasadorja e par\u00EB fem\u00EBr e Shqip\u00EBris\u00EB n\u00EB OKB (2016-2021), P\u00EBrfaq\u00EBsuese e P\u00EBrhershme n\u00EB UNESCO"},
+  {"rank":70,"name":"Olta Boka","category":"Music","profession":"Singer","country":"Albania","instagram":"116.0K","ig_rank":"#57","google":"8,640","gs_rank":"#76","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"42","score":"9.7","achievement":"P\u00EBrfaq\u00EBsuese n\u00EB Eurovision 2008, vet\u00EBm 16 vje\u00E7e, nd\u00EBr m\u00EB t\u00EB rejat n\u00EB historin\u00EB e Eurovision-it"},
+  {"rank":71,"name":"Anilda Ibrahimi","category":"Literature","profession":"Award-winning Author","country":"Albania / Italy","instagram":"9.0K","ig_rank":"#76","google":"2,520","gs_rank":"#87","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"42","score":"9.6","achievement":"Fituese e \u00E7mimit letrar Rapallo, shkruan n\u00EB italisht, autore e disa romaneve t\u00EB njohura"},
+  {"rank":72,"name":"Shkurte Fejza","category":"Music","profession":"Folk Singer (Legend)","country":"Kosovo","instagram":"30.0K","ig_rank":"#67","google":"52,800","gs_rank":"#54","tiktok":"32.0K","tt_rank":"#41","ambassador":"30","score":"9.6","achievement":"K\u00EBng\u00EBtare e folklorit kosovar, z\u00EBri m\u00EB i njohur i muzik\u00EBs popullore kosovare, karrier\u00EB 40-vje\u00E7are"},
+  {"rank":73,"name":"Valeria Aliti","category":"Influencer","profession":"TikTok Creator / Dancer","country":"Albania","instagram":"42.0K","ig_rank":"#62","google":"600","gs_rank":"#99","tiktok":"1.7M","tt_rank":"#9","ambassador":"15","score":"9.5","achievement":"1.7M ndjek\u00EBs n\u00EB TikTok, nd\u00EBr influenceret shqiptare m\u00EB t\u00EB ndjekura n\u00EB Ballkan"},
+  {"rank":74,"name":"Luljeta Lleshanaku","category":"Literature","profession":"Poet / Poet Laureate","country":"Albania","instagram":"\u2014","ig_rank":"\u2014","google":"3,120","gs_rank":"#86","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"52","score":"9.5","achievement":"Poeta Evropiane e Liris\u00EB 2022, Poeta Laureate e Shqip\u00EBris\u00EB (2023-2025)"},
+  {"rank":75,"name":"Mbret\u00EBresha Teuta","category":"Historical","profession":"Illyrian Queen (3rd c. BC)","country":"Albania (Ancient Illyria)","instagram":"\u2014","ig_rank":"\u2014","google":"1,080","gs_rank":"#95","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"50","score":"9.2","achievement":"Mbret\u00EBresh\u00EB ilire e mbret\u00EBris\u00EB Ardiane, sfidoi Rom\u00EBn, simbol komb\u00EBtar shqiptar"},
+  {"rank":76,"name":"Oriola Marashi","category":"Fashion","profession":"Model / Singer","country":"Albania","instagram":"821.0K","ig_rank":"#31","google":"145,200","gs_rank":"#34","tiktok":"32.0K","tt_rank":"#42","ambassador":"25","score":"9.1","achievement":"Modele p\u00EBr Guess, Givenchy dhe Dolce & Gabbana"},
+  {"rank":77,"name":"Ledina \u00C7elo","category":"Music","profession":"Singer","country":"Albania/Germany","instagram":"1.0M","ig_rank":"#24","google":"8,640","gs_rank":"#77","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"35","score":"8.9","achievement":"P\u00EBrfaq\u00EBsuese e Shqip\u00EBris\u00EB n\u00EB Eurovision 2005, k\u00EBng\u00EBtare pop me karrier\u00EB mbi 20 vjet"},
+  {"rank":78,"name":"Hersi Matmuja","category":"Music","profession":"Singer","country":"Albania","instagram":"6.0K","ig_rank":"#78","google":"2,040","gs_rank":"#89","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"35","score":"8.6","achievement":"P\u00EBrfaq\u00EBsuese e Shqip\u00EBris\u00EB n\u00EB Eurovision 2014 me \"One Night's Anger\""},
+  {"rank":79,"name":"Elsidita Selaj","category":"Sports","profession":"Boxer","country":"Albania","instagram":"10.0K","ig_rank":"#75","google":"120","gs_rank":"#100","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"35","score":"8.6","achievement":"Boksierja e par\u00EB fem\u00EBr e Shqip\u00EBris\u00EB, medalje bronzi n\u00EB Kampionatin Evropian 2019"},
+  {"rank":80,"name":"Nexhmije Pagarusha","category":"Music","profession":"Singer / Actress (Legend)","country":"Kosovo","instagram":"\u2014","ig_rank":"\u2014","google":"22,800","gs_rank":"#62","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"45","score":"8.4","achievement":"\u201CBilbili i Kosov\u00EBs\u201C, ikon\u00EB kulturore komb\u00EBtare, artiste pioniere fem\u00EBr"},
+  {"rank":81,"name":"Rashel Kolaneci","category":"Influencer","profession":"Kickboxer / Actress / Influencer","country":"Albania","instagram":"1.0M","ig_rank":"#25","google":"726,000","gs_rank":"#14","tiktok":"1.6M","tt_rank":"#10","ambassador":"0","score":"8.0","achievement":"Kampione kickboxing, prezantuese e \u201CXing me Ermalin\u201C, aktore n\u00EB \u201CFalco\u201C"},
+  {"rank":82,"name":"Norika Sefa","category":"Film & Theatre","profession":"Filmmaker","country":"Kosovo","instagram":"\u2014","ig_rank":"\u2014","google":"840","gs_rank":"#98","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"42","score":"8.0","achievement":"Regjisore e filmit \"Looking for Venera\" (2021), premier\u00EB n\u00EB Festivalin Nd\u00EBrkomb\u00EBtar t\u00EB Filmit n\u00EB Rotterdam"},
+  {"rank":83,"name":"Elvira Dones","category":"Literature","profession":"Novelist / Filmmaker","country":"Albania / Switzerland / USA","instagram":"\u2014","ig_rank":"\u2014","google":"8,640","gs_rank":"#78","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"40","score":"7.7","achievement":"7 romane, \u201CSworn Virgin\u201C u p\u00EBrshtat n\u00EB film (2015), u largua nga Shqip\u00EBria n\u00EB 1988"},
+  {"rank":84,"name":"Va\u00E7e Zela","category":"Music","profession":"Singer (Legend)","country":"Albania","instagram":"\u2014","ig_rank":"\u2014","google":"5,760","gs_rank":"#82","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"38","score":"7.4","achievement":"Fituesja e par\u00EB e Festivalit t\u00EB K\u00EBng\u00EBs 1962, \"Artiste e Merituar\" (1973) dhe \"Artiste e Popullit\" (1977)"},
+  {"rank":85,"name":"Zanfina Ismajli","category":"Music","profession":"Singer","country":"Kosovo","instagram":"800.0K","ig_rank":"#32","google":"10,560","gs_rank":"#73","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"25","score":"7.3","achievement":"K\u00EBng\u00EBtare pop kosovare, nj\u00EB nd\u00EBr artistet m\u00EB t\u00EB njohura t\u00EB muzik\u00EBs popullore n\u00EB Kosov\u00EB"},
+  {"rank":86,"name":"Helena Kadare","category":"Literature","profession":"Author / Screenwriter","country":"Albania / France","instagram":"\u2014","ig_rank":"\u2014","google":"8,640","gs_rank":"#79","tiktok":"\u2014","tt_rank":"\u2014","ambassador":"35","score":"6.9","achievement":"Romani i par\u00EB i botuar nga nj\u00EB grua n\u00EB Shqip\u00EBri (1970), shkrimtare dhe gazetare"},
+  {"rank":87,"name":"Eva Murati","category":"Influencer","profession":"TV Host / Actress / Model","country":"Albania","instagram":"1.5M","ig_rank":"#18","google":"1,320,000","gs_rank":"#10","tiktok":"256.3K","tt_rank":"#23","ambassador":"0","score":"6.8","achievement":"Prezantuese e UEFA Champions League dhe Miss Universe Albania, e diplomuar n\u00EB drejt\u00EBsi"},
+  {"rank":88,"name":"Ori Nebijaj","category":"Influencer","profession":"Fashion & Lifestyle Influencer","country":"Albania","instagram":"192.0K","ig_rank":"#52","google":"1,320","gs_rank":"#92","tiktok":"1.2M","tt_rank":"#12","ambassador":"0","score":"6.7","achievement":"Influencere e mod\u00EBs, bashk\u00EBpunime me marka si Guess dhe Calzedonia"},
+  {"rank":89,"name":"Enca","category":"Music","profession":"Pop Singer / Dancer","country":"Albania","instagram":"2.3M","ig_rank":"#9","google":"594,000","gs_rank":"#16","tiktok":"246.3K","tt_rank":"#25","ambassador":"0","score":"6.4","achievement":"Nd\u00EBr artistet femra m\u00EB t\u00EB ndjekura n\u00EB Shqip\u00EBri, hiti \u201CA po t\u2019p\u00EBlqen\u201C"},
+  {"rank":90,"name":"Luana Vjollca","category":"Influencer","profession":"TV Host / Singer / Influencer","country":"Albania","instagram":"2.3M","ig_rank":"#10","google":"266,400","gs_rank":"#28","tiktok":"271.1K","tt_rank":"#22","ambassador":"0","score":"6.2","achievement":"Moderatore e \"Love Island Albania\", avokate kund\u00EBr bullizmit, prezantuese n\u00EB Top Channel"},
+  {"rank":91,"name":"Eni Ko\u00E7i","category":"Influencer","profession":"Singer / Lifestyle Creator","country":"Albania","instagram":"718.0K","ig_rank":"#36","google":"1,320","gs_rank":"#93","tiktok":"750.0K","tt_rank":"#14","ambassador":"0","score":"6.2","achievement":"K\u00EBng\u00EBtare pop shqiptare, influencere e njohur e bukuris\u00EB dhe stilit t\u00EB jetes\u00EBs"},
+  {"rank":92,"name":"Xhensila Myrtezaj","category":"Music","profession":"Singer / Actress","country":"Albania","instagram":"1.1M","ig_rank":"#20","google":"325,200","gs_rank":"#24","tiktok":"254.9K","tt_rank":"#24","ambassador":"0","score":"5.9","achievement":"K\u00EBng\u00EBtare dhe aktore shqiptare, pjes\u00EBmarr\u00EBse n\u00EB Festivalin e K\u00EBng\u00EBs"},
+  {"rank":93,"name":"Armina Mevlani","category":"Influencer","profession":"Model / TV Host / Entrepreneur","country":"Albania","instagram":"1.9M","ig_rank":"#16","google":"15,600","gs_rank":"#69","tiktok":"39.9K","tt_rank":"#39","ambassador":"0","score":"5.6","achievement":"Influencere dhe modele, prezantuese TV, sip\u00EBrmarr\u00EBse n\u00EB fush\u00EBn e bukuris\u00EB"},
+  {"rank":94,"name":"Arbana Osmani","category":"TV","profession":"TV Presenter / Author","country":"Albania","instagram":"1.0M","ig_rank":"#26","google":"145,200","gs_rank":"#35","tiktok":"96.0K","tt_rank":"#30","ambassador":"0","score":"5.5","achievement":"Prezantuese n\u00EB Top Channel (Big Brother Albania, E Diell), autore, moderatore e emisioneve shqiptare"},
+  {"rank":95,"name":"Marina Vjollca","category":"TV / Influencer","profession":"TV Presenter / Fashion Influencer","country":"Albania","instagram":"1.5M","ig_rank":"#19","google":"52,800","gs_rank":"#55","tiktok":"40.1K","tt_rank":"#38","ambassador":"0","score":"5.5","achievement":"Prezantuese TV dhe influencere mode, moderatore n\u00EB Top Channel"},
+  {"rank":96,"name":"Alketa Vejsiu","category":"TV","profession":"TV Presenter / Singer / Producer","country":"Albania","instagram":"1.0M","ig_rank":"#27","google":"97,200","gs_rank":"#39","tiktok":"106.9K","tt_rank":"#28","ambassador":"0","score":"5.5","achievement":"Prezantuese n\u00EB Sanremo 2020, moderatore e Festivalit t\u00EB K\u00EBng\u00EBs, prodhuese televizive"},
+  {"rank":97,"name":"Nora Istrefi","category":"Music","profession":"Pop Singer","country":"Kosovo","instagram":"1.1M","ig_rank":"#21","google":"79,200","gs_rank":"#46","tiktok":"65.1K","tt_rank":"#33","ambassador":"0","score":"5.5","achievement":"K\u00EBng\u00EBtare pop kosovare, hite t\u00EB shumta n\u00EB Ballkan, bashk\u00EBpunime me artiste rajonale"},
+  {"rank":98,"name":"Kiara Tito","category":"Influencer","profession":"TV Presenter / Actress / Model","country":"Albania","instagram":"864.0K","ig_rank":"#29","google":"97,200","gs_rank":"#40","tiktok":"104.0K","tt_rank":"#29","ambassador":"0","score":"5.5","achievement":"Prezantuese TV, aktore dhe modele, e njohur p\u00EBr rolin n\u00EB serialet shqiptare"},
+  {"rank":99,"name":"Rozana Radi","category":"Music","profession":"Singer/Actress","country":"Albania","instagram":"484.0K","ig_rank":"#44","google":"177,600","gs_rank":"#33","tiktok":"58.0K","tt_rank":"#35","ambassador":"0","score":"5.3","achievement":"K\u00EBng\u00EBtare dhe aktore shqiptare, karrier\u00EB mbi 25 vjet n\u00EB muzik\u00EB dhe film"},
+  {"rank":100,"name":"Belinda Balluku","category":"Politics","profession":"Politician","country":"Albania","instagram":"64.0K","ig_rank":"#59","google":"325,200","gs_rank":"#25","tiktok":"6.0K","tt_rank":"#52","ambassador":"0","score":"5.3","achievement":"Ish-z\u00EBv\u00EBnd\u00EBskryeministre e Shqip\u00EBris\u00EB dhe Ministre e Infrastruktur\u00EBs (deri shkurt 2026), politikane e suksesshme"}
+];
+
+const CAT_COLORS = {
+  'Music':           { bg: '#ffebee', text: '#c62828', bar: '#FF384F' },
+  'Sports':          { bg: '#e8f5e9', text: '#2e7d32', bar: '#43a047' },
+  'Acting':          { bg: '#fff3e0', text: '#e65100', bar: '#ff9800' },
+  'Politics':        { bg: '#f3e5f5', text: '#6a1b9a', bar: '#8e24aa' },
+  'Fashion':         { bg: '#fce4ec', text: '#ad1457', bar: '#e91e63' },
+  'Historical':      { bg: '#fff8e1', text: '#f57f17', bar: '#fbc02d' },
+  'Literature':      { bg: '#e3f2fd', text: '#1565c0', bar: '#1e88e5' },
+  'Science':         { bg: '#e0f2f1', text: '#00695c', bar: '#00897b' },
+  'Public Figure':   { bg: '#f5f5f5', text: '#333333', bar: '#757575' },
+  'Business':        { bg: '#fff3e0', text: '#e65100', bar: '#ff9800' },
+  'Influencer':      { bg: '#ffebee', text: '#b71c1c', bar: '#FF384F' },
+  'Film & Theatre':  { bg: '#fff3e0', text: '#e65100', bar: '#ff9800' },
+  'TV':              { bg: '#fff3e0', text: '#e65100', bar: '#ff9800' },
+  'TV / Influencer': { bg: '#fff3e0', text: '#e65100', bar: '#ff9800' },
+  'Activism':        { bg: '#f3e5f5', text: '#6a1b9a', bar: '#8e24aa' },
+  'default':         { bg: '#f5f5f5', text: '#333333', bar: '#999999' }
+};
+function getCatColor(cat) { return CAT_COLORS[cat] || CAT_COLORS['default']; }
+
+const CAT_SQ = {
+  'Music': 'Muzik\u00EB', 'Sports': 'Sport', 'Acting': 'Aktrim', 'Politics': 'Politik\u00EB',
+  'Fashion': 'Mod\u00EB', 'Historical': 'Historike', 'Literature': 'Let\u00EBrsi',
+  'Science': 'Shkenc\u00EB', 'Public Figure': 'Figur\u00EB Publike', 'Business': 'Biznes',
+  'Influencer': 'Influencere', 'Film & Theatre': 'Film & Teat\u00EBr', 'Activism': 'Aktiviz\u00EBm',
+  'TV': 'TV', 'TV / Influencer': 'TV / Influencere'
+};
+function catLabel(cat) { return CAT_SQ[cat] || cat; }
+
+function fmtNum(val) {
+  if (!val || val === '\u2014') return '\u2014';
+  const s = val.toString().trim();
+  if (/[MK]$/i.test(s)) {
+    const suffix = s.slice(-1);
+    const num = parseFloat(s.slice(0, -1));
+    if (isNaN(num)) return s;
+    return Math.round(num) + suffix;
+  }
+  const raw = parseFloat(s.replace(/,/g, ''));
+  if (isNaN(raw)) return val;
+  if (raw >= 1000000) return Math.round(raw / 1000000) + 'M';
+  if (raw >= 1000) return Math.round(raw / 1000) + 'K';
+  return raw.toString();
+}
+
+function getFlags(country) {
+  const c = country.toLowerCase();
+  const flags = [];
+  const isFromAlbania = /^albania/i.test(country.trim());
+  const isAlbanianDiaspora = /\(albanian\)/i.test(country);
+  const isFromKosovo = c.includes('kosovo');
+  if (isFromAlbania || isAlbanianDiaspora) flags.push('\u{1F1E6}\u{1F1F1}');
+  if (isFromKosovo) flags.push('\u{1F1FD}\u{1F1F0}');
+  if (c.includes('uk') || c.includes('united kingdom')) flags.push('\u{1F1EC}\u{1F1E7}');
+  if (c.includes('usa') || c.includes('american')) flags.push('\u{1F1FA}\u{1F1F8}');
+  if (c.includes('switzerland') || c.includes('swiss')) flags.push('\u{1F1E8}\u{1F1ED}');
+  if (c.includes('france') || c.includes('french')) flags.push('\u{1F1EB}\u{1F1F7}');
+  if (c.includes('germany') || c.includes('german')) flags.push('\u{1F1E9}\u{1F1EA}');
+  if (c.includes('italy') || c.includes('italian')) flags.push('\u{1F1EE}\u{1F1F9}');
+  if (c.includes('sweden') || c.includes('swedish')) flags.push('\u{1F1F8}\u{1F1EA}');
+  if (c.includes('north macedonia') || c.includes('macedon')) flags.push('\u{1F1F2}\u{1F1F0}');
+  if (c.includes('greece') || c.includes('greek')) flags.push('\u{1F1EC}\u{1F1F7}');
+  if (c.includes('india')) flags.push('\u{1F1EE}\u{1F1F3}');
+  if (c.includes('bosnia')) flags.push('\u{1F1E7}\u{1F1E6}');
+  return [...new Set(flags)].join(' ');
+}
+
+function getMedal(rank) { return rank === 1 ? '\u{1F947}' : rank === 2 ? '\u{1F948}' : rank === 3 ? '\u{1F949}' : rank; }
+
+// Table logic -- no pagination, show all 100
+let filtered = [...TOP100];
+let sortCol = 'rank';
+let sortDir = 'asc';
+
+function buildTable() {
+  const tbody = document.getElementById('table-body');
+  tbody.innerHTML = '';
+  filtered.forEach(p => {
+    const col = getCatColor(p.category);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="td-rank"><span class="rank-medal">${getMedal(p.rank)}</span></td>
+      <td class="td-name">${p.name}</td>
+      <td><span class="cat-badge" style="background:${col.bg};color:${col.text}">${catLabel(p.category)}</span></td>
+      <td class="td-flags">${getFlags(p.country)}</td>
+      <td class="social-cell">${IG_ICON} ${fmtNum(p.instagram)}</td>
+      <td class="social-cell">${TT_ICON} ${fmtNum(p.tiktok)}</td>
+      <td class="social-cell">${G_ICON} ${fmtNum(p.google)}</td>
+      <td class="td-achievement">${p.achievement}</td>`;
+    tbody.appendChild(tr);
+  });
+  document.getElementById('filter-count').textContent = filtered.length + ' rezultate';
+}
+
+function populateCatFilter() {
+  const sel = document.getElementById('cat-filter');
+  const cats = [...new Set(TOP100.map(p => p.category))].sort();
+  cats.forEach(c => { const opt = document.createElement('option'); opt.value = c; opt.textContent = catLabel(c); sel.appendChild(opt); });
+}
+
+function applyFilters() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const cat = document.getElementById('cat-filter').value;
+  filtered = TOP100.filter(p => {
+    const matchQ = !q || p.name.toLowerCase().includes(q) || p.profession.toLowerCase().includes(q) || p.country.toLowerCase().includes(q) || p.achievement.toLowerCase().includes(q);
+    const matchCat = !cat || p.category === cat;
+    return matchQ && matchCat;
+  });
+  buildTable();
+}
+
+// Sort click handlers
+document.querySelectorAll('thead th').forEach(th => {
+  th.addEventListener('click', () => {
+    const col = th.dataset.col;
+    if (!col) return;
+    if (sortCol === col) sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+    else { sortCol = col; sortDir = 'asc'; }
+    document.querySelectorAll('thead th').forEach(t => t.classList.remove('sort-asc','sort-desc'));
+    th.classList.add(sortDir === 'asc' ? 'sort-asc' : 'sort-desc');
+    filtered.sort((a, b) => {
+      let va = a[col], vb = b[col];
+      if (col === 'rank' || col === 'score') { va = parseFloat(va)||0; vb = parseFloat(vb)||0; }
+      else { va = String(va||'').toLowerCase(); vb = String(vb||'').toLowerCase(); }
+      return va < vb ? (sortDir==='asc'?-1:1) : va > vb ? (sortDir==='asc'?1:-1) : 0;
+    });
+    buildTable();
+  });
+});
+
+document.getElementById('search-input').addEventListener('input', applyFilters);
+document.getElementById('cat-filter').addEventListener('change', applyFilters);
+
+// Init
+populateCatFilter();
+buildTable();
+</script>
+</body>
+</html>
